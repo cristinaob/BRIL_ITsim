@@ -8,8 +8,8 @@ process = cms.Process("ITclusterAnalyzer")
 # set up the options
 options = VarParsing.VarParsing('analysis')
 #set up the defaults
-options.inputFiles = 'file:/eos/user/g/gauzinge/PUdata/step3_pixel_PU_1.1.root'
-# options.inputFiles = 'file:/afs/cern.ch/user/g/gauzinge/ITsim/CMSSW_10_4_0_pre2/src/BRIL_ITsim/step3_pixel_PU_10.0.root'
+#options.inputFiles = 'file:/eos/user/g/gauzinge/PUdata/step3_pixel_PU_1.1.root'
+options.inputFiles = 'file:/afs/cern.ch/user/g/gauzinge/BIBSim/CMSSW_11_2_0_pre6/src/BRIL_ITsim/DataProductionTkOnly/step3_pixel_PU_100.0.0TkOnly.root'
 # options.inputFiles = 'file:/afs/cern.ch/work/c/cbarrera/private/BRIL/outputDir/step3_pixel_PU_20.0.0.root'
 options.outputFile='summary.root'
 options.maxEvents = -1 #all events
@@ -17,9 +17,10 @@ options.maxEvents = -1 #all events
 #get and parse command line arguments
 options.parseArguments()
 
-# load the geomtry that i modified
-process.load('Configuration.Geometry.GeometryExtended2023D21Reco_cff')
-process.load('Configuration.StandardSequences.MagneticField_cff')
+# load standard geometry
+#process.load('Configuration.Geometry.GeometryExtended2023D21Reco_cff')
+process.load('Configuration.Geometry.GeometryExtended2026D63Reco_cff')
+#process.load('Configuration.StandardSequences.MagneticField_cff')
 
 # initialize MessageLogger and output report
 process.load("FWCore.MessageLogger.MessageLogger_cfi")
@@ -44,13 +45,14 @@ process.source = cms.Source("PoolSource",
 process.content = cms.EDAnalyzer("EventContentAnalyzer")
 # the config of my analyzer
 process.BRIL_IT_Analysis = cms.EDAnalyzer('ITclusterAnalyzer',
-                                         clusters=cms.InputTag("siPixelClusters"),
-                                         simlinks=cms.InputTag("simSiPixelDigis", "Pixel", "HLT"),
-                                         digis=cms.InputTag("simSiPixelDigis", "Pixel", "HLT"),
+                                         clusters=cms.InputTag("siPixelClustersPreSplitting"),
+                                         simlinks=cms.InputTag("simSiPixelDigis", "Pixel", "FULLSIM"),
+                                         digis=cms.InputTag("simSiPixelDigis", "Pixel", "FULLSIM"),
                                          # simlinks=cms.InputTag("Pixel"),
                                          # simtracks=cms.InputTag("g4SimHits"),
                                          maxBin=cms.untracked.uint32(5000),
                                          docoincidence=cms.untracked.bool(True),
+                                         storeClusterTree=cms.untracked.bool(False),
                                          dx_cut=cms.double(0.1),
                                          dy_cut=cms.double(0.1),
                                          dz_cut=cms.double(0.9)
