@@ -8,7 +8,7 @@ process = cms.Process("ITclusterAnalyzer")
 # set up the options
 options = VarParsing.VarParsing('analysis')
 #set up the defaults
-#options.inputFiles = 'file:/eos/user/g/gauzinge/PUdata/step3_pixel_PU_1.1.root'
+# options.inputFiles = 'file:/eos/user/g/gauzinge/PUdata/step3_pixel_PU_1.1.root'
 options.inputFiles = 'file:/afs/cern.ch/user/g/gauzinge/BIBSim/CMSSW_11_2_0_pre6/src/BRIL_ITsim/DataProductionTkOnly/step3_pixel_PU_100.0.0TkOnly.root'
 # options.inputFiles = 'file:/afs/cern.ch/work/c/cbarrera/private/BRIL/outputDir/step3_pixel_PU_20.0.0.root'
 options.outputFile='summary.root'
@@ -17,10 +17,12 @@ options.maxEvents = -1 #all events
 #get and parse command line arguments
 options.parseArguments()
 
-# load standard geometry
+# load standard Geometry
 #process.load('Configuration.Geometry.GeometryExtended2023D21Reco_cff')
 process.load('Configuration.Geometry.GeometryExtended2026D63Reco_cff')
-#process.load('Configuration.StandardSequences.MagneticField_cff')
+#custom BRIL configs like Geometry
+# process.load('BRIL_ITsim.DataProductionTkOnly.cmsExtendedGeometry2026D999XML_cff')
+# process.load('Configuration.StandardSequences.MagneticField_cff')
 
 # initialize MessageLogger and output report
 process.load("FWCore.MessageLogger.MessageLogger_cfi")
