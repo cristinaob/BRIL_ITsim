@@ -1,0 +1,18 @@
+PU_parameter        = 100
+NEvents             = 1000
+
+executable          = runSimTkOnly.sh
+arguments           = $(PU_parameter) $(NEvents) $(ProcId)
+#arguments           = $(PU_parameter) $(NEvents) 4
+output              = batchlog/runSim.$(ClusterId).$(ProcId).out
+error               = batchlog/runSim.$(ClusterId).$(ProcId).err
+log                 = batchlog/runSim.$(ClusterId).log
+transfer_input_files    = sandbox.tar.bz2, python/BRIL_ITsimPUTkOnly_cfg.py
+#getenv              = True
+request_cpus        = 10
+requirements = (OpSysAndVer =?= "CentOS7")
+
+
+transfer_output_files = ""
++JobFlavour        = "nextweek"
+queue 10

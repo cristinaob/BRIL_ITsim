@@ -1,0 +1,20 @@
+ mkdir BIBSim
+ cd BIBSim
+ cmsrel 
+ scram list CMSSW 11
+ scram list CMSSW 11_2
+ cmsrel CMSSW_11_2_0_pre6
+ cd CMSSW_11_2_0_pre6/src/
+ cmsenv
+ git cms-addpkg Geometry/TrackerCommonData
+ git cms-addpkg Geometry/TrackerRecoData
+ git cms-addpkg Geometry/TrackerSimData
+ git cms-addpkg SLHCUpgradeSimulations/Geometry
+ #git cms-addpkg Configuration/PyReleaseValidation
+ #git-cms-addpkg L1Trigger/TrackTrigger
+ #git-cms-addpkg DataFormats/L1TrackTrigger
+ #git-cms-addpkg SimTracker/TrackTriggerAssociation
+ #git clone -b Tools_for_10_0_0 git://github.com/sviret/HL_LHC.git
+ #mv HL_LHC/DataProduction DataProduction
+ #mv HL_LHC/Extractors Extractors
+ git clone https://github.com/gauzinge/BRIL_ITsim.git

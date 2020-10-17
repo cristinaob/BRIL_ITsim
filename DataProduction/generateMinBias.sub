@@ -1,0 +1,16 @@
+NEvents             = 15000
+
+executable          = runMinBias.sh
+arguments           = $(NEvents) $(ProcId)
+output              = batchlog/runMinBias.$(ClusterId).out
+error               = batchlog/runMinBias.$(ClusterId).err
+log                 = batchlog/runMinBiasSim.$(ClusterId).log
+transfer_input_files    = sandbox.tar.bz2, BRIL_ITsimMinBias_cfg.py
+#getenv              = True
+request_cpus        = 10
+requirements = (OpSysAndVer =?= "SLCern6")
+
+
+transfer_output_files = ""
++JobFlavour        = "testmatch"
+queue 20

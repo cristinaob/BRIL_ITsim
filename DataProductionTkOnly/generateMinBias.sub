@@ -1,0 +1,16 @@
+NEvents             = 10000
+
+executable          = runMinBiasTkOnly.sh
+arguments           = $(NEvents) $(ProcId)
+output              = batchlog/runMinBias.$(ClusterId).out
+error               = batchlog/runMinBias.$(ClusterId).err
+log                 = batchlog/runMinBiasSim.$(ClusterId).log
+transfer_input_files    = sandbox.tar.bz2, python/BRIL_ITsimMinBiasTkOnly_cfg.py
+#getenv              = True
+request_cpus        = 10
+requirements = (OpSysAndVer =?= "CentOS7")
+
+
+transfer_output_files = ""
++JobFlavour        = "testmatch"
+queue 10

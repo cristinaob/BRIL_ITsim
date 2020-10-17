@@ -18,7 +18,7 @@ options.maxEvents = -1 #all events
 options.parseArguments()
 
 # load standard Geometry
-#process.load('Configuration.Geometry.GeometryExtended2023D21Reco_cff')
+# process.load('Configuration.Geometry.GeometryExtended2023D21Reco_cff')
 process.load('Configuration.Geometry.GeometryExtended2026D63Reco_cff')
 #custom BRIL configs like Geometry
 # process.load('BRIL_ITsim.DataProductionTkOnly.cmsExtendedGeometry2026D999XML_cff')
