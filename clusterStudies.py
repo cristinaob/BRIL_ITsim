@@ -11,7 +11,7 @@ import pandas as pd
 # Variable, input data path
 # TO DO: Make them command line arguments!
 varSim    = "Cluster"
-Path      = '/afs/cern.ch/work/c/cbarrera/private/BRIL/clusterData_Joseph/'
+Path      = '/afs/cern.ch/work/c/cbarrera/public/clusterData_Joseph/'
 OutPath   = 'clusterPlots/'
 
 
